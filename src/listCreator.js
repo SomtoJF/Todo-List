@@ -12,6 +12,17 @@ const clearContent = ()=>{
 
 const createList = function (type){
     clearContent();
-    createForm();
+    let form = createForm();
+    let addButton = document.createElement('button');
+    addButton.textContent = '+';
+    addButton.addEventListener('click', function (){
+        // let form = document.getElementById(form);
+        if(form.style.display == 'none'){
+            form.style.display = 'block';
+        }else{
+            form.style.display = 'none';
+        };
+    })
+    content.appendChild(addButton);
 };
 export default createList;
