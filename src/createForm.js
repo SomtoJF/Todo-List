@@ -1,5 +1,7 @@
 function createForm() {
     let form = document.createElement('form');
+    form.setAttribute('id', 'form');
+    form.style.display = 'none';
     let title = document.createElement('input')
     let description = document.createElement('textarea');
     let radioContainer = document.createElement('fieldset');
