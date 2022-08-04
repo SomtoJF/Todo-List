@@ -6,6 +6,6 @@ import {default as createNav} from './nav';
 
 let formatScreen = () =>{
     content.innerHTML = "";
-    content.appendChild(createNav);
+    content.appendChild(createNav());
 };
 export {formatScreen};
