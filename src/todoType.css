@@ -1,0 +1,30 @@
+#typeContainer{
+    height: 50vh;
+    width: max(40%, 250px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10%;
+    position: absolute;
+    top: 50%;
+    margin-top: calc(-1 * 50vh * 0.5);
+    left: 50%;
+    margin-left: calc(-1 * max(40%, 250px) * 0.5);
+}
+#typeContainer > button{
+    width: 95%;
+    height: 20%;
+    background-color: pink;
+    color: black;
+    border: none;
+    border-left: solid 5px var(--blue);
+    font-family: var(--typeContainerFont);
+    font-size: 1rem;
+    font-weight: 700;
+    box-sizing: border-box;
+}
+#typeContainer > button:hover{
+    transition: 0.5s ;
+    transform: translateY(-10px);
+}
