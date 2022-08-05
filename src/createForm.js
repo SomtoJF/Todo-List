@@ -22,6 +22,7 @@ function createForm() {
     title.setAttribute('type', 'text');
     title.setAttribute('placeholder', 'Task Title');
     title.setAttribute('id', 'title');
+    title.setAttribute('required', '');
     description.setAttribute('placeholder', 'description');
     description.setAttribute('id', 'Description');
     for(let i = 0; i < radioArray.length; i++){
