@@ -1,0 +1,35 @@
+#content > button{
+    --width: 7vh;
+    width: var(--width);
+    height: 7vh;
+    border-radius: 50%;
+    background-color: var(--pink);
+    border: none;
+    position: relative;
+    left: 50%;
+    margin-left: calc(-1 * var(--width) * 0.5);
+    top: 10px;
+    transition: 1s;
+    font-weight: 1000;
+    font-size: 1.5rem;
+    color: white;
+}
+
+#content > button:hover{
+    --width: 21vh;
+    border-radius: 15px;
+}
+#content > button:hover::after{
+    content: ' Add Task';
+    animation: fadein 1100ms ease-in 0s 1 forwards;
+    font-weight: 100;
+    font-size: 1rem;
+}
+@keyframes fadein {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
