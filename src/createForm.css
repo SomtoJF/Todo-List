@@ -1,22 +1,22 @@
 #form{
     width: max(40%, 250px);
-    height: 50%;
+    height: 40%;
     position: absolute;
-    top: 50%;
+    top: 20%;
     left: 50%;
-    margin-top: -25%;
     margin-left: calc(-1 * max(40%, 250px) * 0.5);
-    display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     background-color: var(--background);
 }
 
 #form > *{
     display: block;
 }
-
+#form > textarea{
+    height: 50%;
+}
 #form > button[type = 'submit']{
     width: 20%;
     height: 10%;
