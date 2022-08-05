@@ -4,6 +4,7 @@ let schoolList = [];
 let content = document.getElementById('content');
 import {default as createNav} from './nav';
 import {default as createForm} from './createForm';
+import './listCreator.css';
 
 const clearContent = ()=>{
     content.innerHTML = "";
@@ -16,9 +17,8 @@ const createList = function (type){
     let addButton = document.createElement('button');
     addButton.textContent = '+';
     addButton.addEventListener('click', function (){
-        // let form = document.getElementById(form);
         if(form.style.display == 'none'){
-            form.style.display = 'block';
+            form.style.display = 'flex';
         }else{
             form.style.display = 'none';
         };
