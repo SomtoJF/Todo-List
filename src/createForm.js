@@ -1,3 +1,5 @@
+import './createForm.css';
+
 function createForm() {
     let form = document.createElement('form');
     form.setAttribute('id', 'form');
@@ -36,6 +38,7 @@ function createForm() {
     };
     submitButton.setAttribute('type', 'submit');
     submitButton.setAttribute('name', 'submit');
+    submitButton.textContent = 'Add';
 
     form.appendChild(title);
     form.appendChild(description);
