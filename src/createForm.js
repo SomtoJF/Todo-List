@@ -1,6 +1,9 @@
 import './createForm.css';
+let personalList = [];
+let workList = [];
+let schoolList = [];
 
-function createForm() {
+function createForm(type) {
     let form = document.createElement('form');
     form.setAttribute('id', 'form');
     form.style.display = 'none';
@@ -47,8 +50,44 @@ function createForm() {
     form.appendChild(submitButton);
     content.appendChild(form);
 
+    function task (title, description, priority){
+        return {title, description, priority};
+    };
+
+    function getRadioValue(){
+        let listPriorities = document.getElementsByName('listPriorities');
+        for(let i = 0; i < listPriorities.length; i++){
+            if(listPriorities[i].checked && i == 0){
+                return 'High';
+            }
+            else if(listPriorities[i].checked && i == 1){
+                return 'Medium';
+            }
+            else if(listPriorities[i].checked && i == 2){
+                return 'Low';
+            };
+        };
+    };
+
+    function addTaskToList(listname){
+        if(listname == 'personal'){
+            personalList[personalList.length] = task(title.value, description.value, getRadioValue());
+            alert(personalList.length);
+        };
+        if(listname == 'work'){
+            workList[workList.length] = task(title.value, description.value, getRadioValue());
+            alert(listname);
+        };
+        if(listname == 'school'){
+            workList[workList.length] = task(title.value, description.value, getRadioValue());
+            alert(listname);
+        };
+    }
+
     form.addEventListener('submit', function (e){
+        addTaskToList(type);
         e.preventDefault();
+        form.reset();
     })
     return form;
 };
