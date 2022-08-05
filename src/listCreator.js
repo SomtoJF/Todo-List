@@ -11,8 +11,7 @@ const clearContent = ()=>{
     content.appendChild(createNav());
 };
 
-const createList = function (type){
-    clearContent();
+const createAddButton = ()=>{
     let form = createForm();
     let addButton = document.createElement('button');
     addButton.textContent = '+';
@@ -24,5 +23,10 @@ const createList = function (type){
         };
     })
     content.appendChild(addButton);
+};
+
+const createList = function (type){
+    clearContent();
+    createAddButton();
 };
 export default createList;
