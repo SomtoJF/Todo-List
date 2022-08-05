@@ -1,6 +1,3 @@
-let personalList = [];
-let workList = [];
-let schoolList = [];
 let content = document.getElementById('content');
 import {default as createNav} from './nav';
 import {default as createForm} from './createForm';
@@ -11,8 +8,8 @@ const clearContent = ()=>{
     content.appendChild(createNav());
 };
 
-const createAddButton = ()=>{
-    let form = createForm();
+const createAddButton = (type)=>{
+    let form = createForm(type);
     let addButton = document.createElement('button');
     addButton.textContent = '+';
     addButton.addEventListener('click', function (){
@@ -27,6 +24,6 @@ const createAddButton = ()=>{
 
 const createList = function (type){
     clearContent();
-    createAddButton();
+    createAddButton(type);
 };
 export default createList;
