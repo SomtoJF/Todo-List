@@ -7,7 +7,11 @@ const clearContent = ()=>{
     content.innerHTML = "";
     content.appendChild(createNav());
 };
-
+const createListContainer = ()=>{
+    let listContainer = document.createElement('div');
+    listContainer.setAttribute('id', 'listContainer');
+    content.appendChild(listContainer);
+};
 const createAddButton = (type)=>{
     let form = createForm(type);
     let addButton = document.createElement('button');
@@ -24,6 +28,7 @@ const createAddButton = (type)=>{
 
 const createList = function (type){
     clearContent();
+    createListContainer();
     createAddButton(type);
 };
 export default createList;
