@@ -72,17 +72,46 @@ function createForm(type) {
     function addTaskToList(listname){
         if(listname == 'personal'){
             personalList[personalList.length] = task(title.value, description.value, getRadioValue());
-            alert(personalList.length);
+            displayList(personalList);
+            // alert(personalList.length);
         };
         if(listname == 'work'){
             workList[workList.length] = task(title.value, description.value, getRadioValue());
-            alert(listname);
+            displayList(workList);
+            // alert(listname);
         };
         if(listname == 'school'){
-            workList[workList.length] = task(title.value, description.value, getRadioValue());
-            alert(listname);
+            schoolList[schoolList.length] = task(title.value, description.value, getRadioValue());
+            displayList(schoolList);
+            // alert(listname);
         };
-    }
+    };
+
+    function displayList(listname) {
+        let listContainer = document.getElementById('listContainer');
+        listContainer.innerHTML = '';
+        for(let i = 0; i < listname.length; i++){
+            let listItem = document.createElement('div');
+            let titleDiv = document.createElement('div');
+            titleDiv.textContent = listname[i].title;
+
+            if(listname[i].priority == 'High'){
+                listItem.style.borderLeft = 'solid 5px red';
+            }
+            if(listname[i].priority == 'Medium'){
+                listItem.style.borderLeft = 'solid 5px orange';
+            }
+            if(listname[i].priority == 'Low'){
+                listItem.style.borderLeft = 'solid 5px Lime';
+            }
+
+            //append task information to task item
+            listItem.appendChild(titleDiv);
+
+            //append task item to container
+            listContainer.appendChild(listItem);
+        };
+    };
 
     form.addEventListener('submit', function (e){
         addTaskToList(type);
