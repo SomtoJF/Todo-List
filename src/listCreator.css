@@ -33,3 +33,12 @@
         opacity: 1;
     }
 }
+#listContainer{
+    position: absolute;
+    top: 23%;
+    height: 2px;
+    background-color: inherit;
+    width: 80%;
+    left: 50%;
+    margin-left: calc(-40%);
+}
