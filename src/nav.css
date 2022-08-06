@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
 nav{
     box-sizing: border-box;
     height: 10%;
@@ -14,4 +15,5 @@ nav{
     width: 10%;
     background-color: inherit;
     text-align: center;
+    font-family: 'Dancing Script', fantasy, cursive;
 }
