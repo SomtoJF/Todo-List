@@ -73,17 +73,14 @@ function createForm(type) {
         if(listname == 'personal'){
             personalList[personalList.length] = task(title.value, description.value, getRadioValue());
             displayList(personalList);
-            // alert(personalList.length);
         };
         if(listname == 'work'){
             workList[workList.length] = task(title.value, description.value, getRadioValue());
             displayList(workList);
-            // alert(listname);
         };
         if(listname == 'school'){
             schoolList[schoolList.length] = task(title.value, description.value, getRadioValue());
             displayList(schoolList);
-            // alert(listname);
         };
     };
 
@@ -92,8 +89,8 @@ function createForm(type) {
         listContainer.innerHTML = '';
         for(let i = 0; i < listname.length; i++){
             let listItem = document.createElement('div');
-            let titleDiv = document.createElement('div');
-            titleDiv.textContent = listname[i].title;
+            let infoDiv = document.createElement('div');
+            infoDiv.textContent = `${listname[i].title}: ${listname[i].description}`;
 
             if(listname[i].priority == 'High'){
                 listItem.style.borderLeft = 'solid 5px red';
@@ -106,7 +103,7 @@ function createForm(type) {
             }
 
             //append task information to task item
-            listItem.appendChild(titleDiv);
+            listItem.appendChild(infoDiv);
 
             //append task item to container
             listContainer.appendChild(listItem);
