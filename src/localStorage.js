@@ -16,3 +16,4 @@ function storageAvailable(type) {
             (storage && storage.length !== 0);
     }
 };
+export default storageAvailable;
