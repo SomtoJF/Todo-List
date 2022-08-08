@@ -105,6 +105,7 @@ function createForm(type) {
             if(listname[i].priority == 'Low'){
                 listItem.style.borderLeft = 'solid 5px Lime';
             }
+            listItem.setAttribute('title', `Priority: ${listname[i].priority}`);
 
             infoDiv.addEventListener('click', function(){
                 if(listContainer.childNodes[i].style.height == '10vh'){
