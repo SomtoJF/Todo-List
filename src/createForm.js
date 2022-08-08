@@ -1,7 +1,9 @@
 import './createForm.css';
+import {default as storageAvailable} from './localStorage';
 let personalList = [];
 let workList = [];
 let schoolList = [];
+let listArrayString;
 
 function createForm(type) {
     let form = document.createElement('form');
@@ -88,24 +90,33 @@ function createForm(type) {
         };
     };
 
-    function displayList(listname) {
+    function displayList(listArray) {
+        if(listArray == personalList){
+            listArrayString = 'personalList';
+        }
+        else if(listArray == workList){
+            listArrayString = 'workList';
+        }
+        else if(listArray == schoolList){
+            listArrayString = 'schoolList';
+        };
         let listContainer = document.getElementById('listContainer');
         listContainer.innerHTML = '';
-        for(let i = 0; i < listname.length; i++){
+        for(let i = 0; i < listArray.length; i++){
             let listItem = document.createElement('div');
             let infoDiv = document.createElement('div');
-            infoDiv.textContent = `${listname[i].title}: ${listname[i].description}`;
+            infoDiv.textContent = `${listArray[i].title}: ${listArray[i].description}`;
 
-            if(listname[i].priority == 'High'){
+            if(listArray[i].priority == 'High'){
                 listItem.style.borderLeft = 'solid 5px red';
             }
-            if(listname[i].priority == 'Medium'){
+            if(listArray[i].priority == 'Medium'){
                 listItem.style.borderLeft = 'solid 5px orange';
             }
-            if(listname[i].priority == 'Low'){
+            if(listArray[i].priority == 'Low'){
                 listItem.style.borderLeft = 'solid 5px Lime';
             }
-            listItem.setAttribute('title', `Priority: ${listname[i].priority}`);
+            listItem.setAttribute('title', `Priority: ${listArray[i].priority}`);
 
             infoDiv.addEventListener('click', function(){
                 if(listContainer.childNodes[i].style.height == '10vh'){
@@ -116,19 +127,44 @@ function createForm(type) {
                 };
             });
             infoDiv.addEventListener('dblclick', function (){
-                listContainer.childNodes[i].style.textDecoration == 'line-through';
-                listContainer.childNodes[i].style.color == 'grey';
-                listname.splice(i, 1);
-                displayList(listname);
+                alert(listArrayString);
+                if(listArray.length == 1){
+                    localStorage.removeItem(`${listArrayString}`);
+                };
+                listArray.splice(i, 1);
+                displayList(listArray);
             });
             //append task information to task item
             listItem.appendChild(infoDiv);
 
             //append task item to container
             listContainer.appendChild(listItem);
+
+            //update local storage
+            localStorage.setItem(`${listArrayString}`, JSON.stringify(listArray));
         };
     };
-
+    function DisplayAvailableTasks(listname){
+        if (storageAvailable('localStorage') && localStorage.getItem('personalList')) {
+            personalList = JSON.parse(localStorage.getItem('personalList'));
+            if(listname === 'personal'){
+                displayList(personalList);
+           };
+        };
+        if (storageAvailable('localStorage') && localStorage.getItem('workList')) {
+            workList = JSON.parse(localStorage.getItem('workList'));
+            if(listname === 'work'){
+                 displayList(workList);
+            };
+         };
+        if (storageAvailable('localStorage') && localStorage.getItem('schoolList')) {
+            schoolList = JSON.parse(localStorage.getItem('schoolList'));
+            if(listname === 'school'){
+                displayList(schoolList);
+           };
+        };
+    };
+    DisplayAvailableTasks(type);
     form.addEventListener('submit', function (e){
         addTaskToList(type);
         e.preventDefault();
