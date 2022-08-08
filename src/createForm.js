@@ -127,7 +127,6 @@ function createForm(type) {
                 };
             });
             infoDiv.addEventListener('dblclick', function (){
-                alert(listArrayString);
                 if(listArray.length == 1){
                     localStorage.removeItem(`${listArrayString}`);
                 };
