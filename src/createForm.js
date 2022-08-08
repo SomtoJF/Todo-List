@@ -26,8 +26,12 @@ function createForm(type) {
     title.setAttribute('placeholder', 'Task Title');
     title.setAttribute('id', 'title');
     title.setAttribute('required', '');
+    title.setAttribute('maxlength', 50);
+    title.setAttribute('title', 'Required, Maximum of 50 characters');
     description.setAttribute('placeholder', 'description');
     description.setAttribute('id', 'Description');
+    description.setAttribute('maxlength', 120)
+    description.setAttribute('title', 'Maximum of 120 characters')
     for(let i = 0; i < radioArray.length; i++){
         let radio = document.createElement('input');
         let label = document.createElement('label');
@@ -102,6 +106,20 @@ function createForm(type) {
                 listItem.style.borderLeft = 'solid 5px Lime';
             }
 
+            infoDiv.addEventListener('click', function(){
+                if(listContainer.childNodes[i].style.height == '10vh'){
+                    listContainer.childNodes[i].style.height = '5vh';
+                }
+                else{
+                    listContainer.childNodes[i].style.height = '10vh';
+                };
+            });
+            infoDiv.addEventListener('dblclick', function (){
+                listContainer.childNodes[i].style.textDecoration == 'line-through';
+                listContainer.childNodes[i].style.color == 'grey';
+                listname.splice(i, 1);
+                displayList(listname);
+            });
             //append task information to task item
             listItem.appendChild(infoDiv);
 
