@@ -12,6 +12,16 @@ const todoType = function () {
             typeButton.addEventListener('click', ()=>{
                 createList('personal');
             })
+        };
+        if(i == 1){
+            typeButton.addEventListener('click', ()=>{
+                createList('work');
+            })
+        }
+        if(i == 2){
+            typeButton.addEventListener('click', ()=>{
+                createList('school');
+            });
         }
         container.appendChild(typeButton);
     };
