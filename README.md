@@ -5,7 +5,7 @@ This is a simple web app for keeping track of your daily tasks.
 * Vanilla JS
 * HTML
 * CSS
-### [Live Demo]()
+### [Live on gh-pages](https://somtojf.github.io/Todo-List/)
 ## Getting Started
 In order to setup and work on this project on your own, you will need to:
 1. [Fork and Clone](https://docs.github.com/en/desktop/contributing-and-collaborating-using-github-desktop/adding-and-cloning-repositories/cloning-and-forking-repositories-from-github-desktop) this project
