@@ -59,8 +59,21 @@
     flex-direction: column;
     justify-content: flex-start;
     line-height: 5vh;
+    display: grid;
+    grid-template-columns: 10fr 1fr;
+    justify-content: space-between;
 }
 #listContainer > div > div{
+    box-sizing: border-box;
     width: 100%;
     height: 100%;
+}
+#listContainer > div button{
+    box-sizing: border-box;
+    height: min(90%, 53px);
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    background-repeat: no-repeat;
+    background-position: center;
 }
