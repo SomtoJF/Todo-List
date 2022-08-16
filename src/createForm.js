@@ -15,6 +15,11 @@ function createForm(type) {
     let radioContainer = document.createElement('fieldset');
     let legend  = document.createElement('legend');
     let submitButton = document.createElement('button');
+
+    let closeButton = document.createElement('button');
+    closeButton.setAttribute('id', 'closeButton');
+    closeButton.addEventListener('click', ()=> form.style.display = 'none');
+
     let radios = function(priority, name, type, id){
         return {priority, name, type, id}
     };
@@ -51,11 +56,13 @@ function createForm(type) {
     submitButton.setAttribute('name', 'submit');
     submitButton.textContent = 'Add';
 
-    form.appendChild(title);
-    form.appendChild(description);
-    form.appendChild(radioContainer);
-    form.appendChild(submitButton);
-    content.appendChild(form);
+    const appendToForm  = function (){
+        for(let i = 0; i < arguments.length; i++){
+            form.appendChild(arguments[i]);
+        };
+        content.appendChild(form);
+    };
+    appendToForm(closeButton, title, description, radioContainer, submitButton);
 
     function task (title, description, priority){
         return {title, description, priority};
