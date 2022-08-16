@@ -9,6 +9,7 @@
     align-items: center;
     justify-content: space-evenly;
     background-color: var(--background);
+    border: solid 2px var(--blue);
 }
 
 #form > *{
@@ -23,4 +24,24 @@
     background-color: var(--blue);
     border: none;
     border-left: 5px solid var(--pink);
+}
+#closeButton{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: none;
+    background-color: transparent;
+    background-image: url('./close.png');
+    background-position: center;
+    background-size: contain;
+    top: 0%;
+    right: 0%;
+}
+#closeButton:hover{
+    animation: rotate 1s ease-in 100ms 1 forwards;
+}
+@keyframes rotate {
+    100%{
+        transform: rotate(360deg);
+    }
 }
