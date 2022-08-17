@@ -139,13 +139,7 @@ function createForm(type) {
                     deleteButton.style.display = 'block';
                 };
             });
-            infoDiv.addEventListener('dblclick', function (){
-                if(listArray.length == 1){
-                    localStorage.removeItem(`${listArrayString}`);
-                };
-                listArray.splice(i, 1);
-                displayList(listArray);
-            });
+            
             deleteButton.addEventListener('click', function (){
                 if(listArray.length == 1){
                     localStorage.removeItem(`${listArrayString}`);
