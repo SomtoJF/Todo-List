@@ -1,5 +1,8 @@
 import './createForm.css';
 import {default as storageAvailable} from './localStorage';
+import {default as task} from './constructor';
+import { default as getRadioValue } from "./getRadioValue";
+import { default as displayList } from "./displayList";
 let personalList = [];
 let workList = [];
 let schoolList = [];
@@ -64,102 +67,21 @@ function createForm(type) {
     };
     appendToForm(closeButton, title, description, radioContainer, submitButton);
 
-    function task (title, description, priority){
-        return {title, description, priority};
-    };
-
-    function getRadioValue(){
-        let listPriorities = document.getElementsByName('listPriorities');
-        for(let i = 0; i < listPriorities.length; i++){
-            if(listPriorities[i].checked && i == 0){
-                return 'High';
-            }
-            else if(listPriorities[i].checked && i == 1){
-                return 'Medium';
-            }
-            else if(listPriorities[i].checked && i == 2){
-                return 'Low';
-            };
-        };
-    };
-
     function addTaskToList(listname){
         if(listname == 'personal'){
-            personalList[personalList.length] = task(title.value, description.value, getRadioValue());
+            personalList[personalList.length] = task(title.value, description.value, getRadioValue('listPriorities'));
             displayList(personalList);
         };
         if(listname == 'work'){
-            workList[workList.length] = task(title.value, description.value, getRadioValue());
+            workList[workList.length] = task(title.value, description.value, getRadioValue('listPriorities'));
             displayList(workList);
         };
         if(listname == 'school'){
-            schoolList[schoolList.length] = task(title.value, description.value, getRadioValue());
+            schoolList[schoolList.length] = task(title.value, description.value, getRadioValue('listPriorities'));
             displayList(schoolList);
         };
     };
 
-    function displayList(listArray) {
-        if(listArray == personalList){
-            listArrayString = 'personalList';
-        }
-        else if(listArray == workList){
-            listArrayString = 'workList';
-        }
-        else if(listArray == schoolList){
-            listArrayString = 'schoolList';
-        };
-        let listContainer = document.getElementById('listContainer');
-        listContainer.innerHTML = '';
-        for(let i = 0; i < listArray.length; i++){
-            let listItem = document.createElement('div');
-            let infoDiv = document.createElement('div');
-            infoDiv.textContent = `${listArray[i].title}: ${listArray[i].description}`;
-            let deleteButton = document.createElement('button');
-            deleteButton.style.backgroundImage = `url(${deleteImage})`;
-            deleteButton.style.display = 'none';
-
-            if(listArray[i].priority == 'High'){
-                listItem.style.borderLeft = 'solid 5px red';
-            }
-            if(listArray[i].priority == 'Medium'){
-                listItem.style.borderLeft = 'solid 5px orange';
-            }
-            if(listArray[i].priority == 'Low'){
-                listItem.style.borderLeft = 'solid 5px Lime';
-            }
-            listItem.setAttribute('title', `Priority: ${listArray[i].priority}`);
-
-            infoDiv.addEventListener('click', function(){
-                if(listContainer.childNodes[i].style.height == '10vh'){
-                    listContainer.childNodes[i].style.height = '5vh';
-                    deleteButton.style.display = 'none';
-                }
-                else{
-                    listContainer.childNodes[i].style.height = '10vh';
-                    deleteButton.style.display = 'block';
-                };
-            });
-            
-            deleteButton.addEventListener('click', function (){
-                if(listArray.length == 1){
-                    localStorage.removeItem(`${listArrayString}`);
-                };
-                listArray.splice(i, 1);
-                displayList(listArray);
-            });
-            //append task information to task item
-            listItem.appendChild(infoDiv);
-
-            //append button to task information
-            listItem.appendChild(deleteButton);
-
-            //append task item to container
-            listContainer.appendChild(listItem);
-
-            //update local storage
-            localStorage.setItem(`${listArrayString}`, JSON.stringify(listArray));
-        };
-    };
     function DisplayAvailableTasks(listname){
         if (storageAvailable('localStorage') && localStorage.getItem('personalList')) {
             personalList = JSON.parse(localStorage.getItem('personalList'));
@@ -189,3 +111,4 @@ function createForm(type) {
     return form;
 };
 export default createForm;
+export {personalList, workList, schoolList, listArrayString};
