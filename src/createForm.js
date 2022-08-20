@@ -15,6 +15,7 @@ function createForm(type) {
     let description = document.createElement('textarea');
     let radioContainer = document.createElement('fieldset');
     let legend  = document.createElement('legend');
+    let dueDate = document.createElement('input');
     let submitButton = document.createElement('button');
 
     let closeButton = document.createElement('button');
@@ -42,6 +43,9 @@ function createForm(type) {
     description.setAttribute('id', 'Description');
     description.setAttribute('maxlength', 120)
     description.setAttribute('title', 'Maximum of 120 characters')
+    dueDate.setAttribute('type', 'datetime-local');
+    dueDate.setAttribute('id', 'dueDate');
+    dueDate.setAttribute('required', '');
     for(let i = 0; i < radioArray.length; i++){
         let radio = document.createElement('input');
         let label = document.createElement('label');
@@ -64,7 +68,7 @@ function createForm(type) {
         };
         content.appendChild(form);
     };
-    appendToForm(closeButton, title, description, radioContainer, submitButton);
+    appendToForm(closeButton, title, description, dueDate,radioContainer, submitButton);
 
     function addTaskToList(listname){
         if(listname == 'personal'){
