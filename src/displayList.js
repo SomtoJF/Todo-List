@@ -1,6 +1,6 @@
 import { personalList, schoolList, workList } from "./createForm";
-import deleteImage from './deleteImage.png';
 import { formatRelative } from "date-fns";
+import './displayList.css';
 let listArrayString;
 
 function arrayNameToString(arrayName){
@@ -22,12 +22,9 @@ function displayList(listArray) {
     listContainer.innerHTML = '';
     for(let i = 0; i < listArray.length; i++){
         let listItem = document.createElement('div');
+
         let infoDiv = document.createElement('div');
         infoDiv.textContent = `${listArray[i].title}: ${listArray[i].description}`;
-        let deleteButton = document.createElement('button');
-        deleteButton.style.backgroundImage = `url(${deleteImage})`;
-        deleteButton.style.display = 'none';
-
         if(listArray[i].priority == 'High'){
             infoDiv.style.borderLeft = 'solid 5px red';
         }
@@ -42,7 +39,6 @@ function displayList(listArray) {
         infoDiv.addEventListener('click', function(){
             if(listContainer.childNodes[i].firstChild.style.height == '10vh'){
                 listContainer.childNodes[i].firstChild.style.height = '5vh';
-                // alert(relativeTime(Date.parse(listArray[i].dateCreated)));
                 deleteButton.style.display = 'none';
             }
             else{
@@ -51,6 +47,7 @@ function displayList(listArray) {
             };
         });
         
+        let deleteButton = document.createElement('button');
         deleteButton.addEventListener('click', function (){
             if(listArray.length == 1){
                 localStorage.removeItem(`${listArrayString}`);
@@ -58,11 +55,18 @@ function displayList(listArray) {
             listArray.splice(i, 1);
             displayList(listArray);
         });
+
+        let timeContainer = document.createElement('div');
+        timeContainer.innerHTML = `<small>Created ${relativeTime(Date.parse(listArray[i].dateCreated))}</small>`;
+
         //append task information to task item
         listItem.appendChild(infoDiv);
 
         //append button to task information
         listItem.appendChild(deleteButton);
+        
+        // append Time Container
+        listItem.appendChild(timeContainer);
 
         //append task item to container
         listContainer.appendChild(listItem);
@@ -71,8 +75,12 @@ function displayList(listArray) {
         localStorage.setItem(`${listArrayString}`, JSON.stringify(listArray));
     };
     
-    const relativeTime = (date) => {
+    function relativeTime(date){
+        if(isNaN(date)){
+            date = 0;
+        }
         return formatRelative(date, new Date());
+        // return formatRelative(date, new Date());
     };
 };
 export default displayList;
