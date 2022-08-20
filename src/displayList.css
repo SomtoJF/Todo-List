@@ -1,0 +1,31 @@
+#listContainer > div{
+    box-sizing: border-box;
+    height: max-content;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    line-height: 5vh;
+    display: grid;
+    grid-template-columns: 10fr 1fr;
+    justify-content: space-between;
+}
+#listContainer > div > div{
+    background-color: white;
+    border: solid 1px var(--blue);
+    box-sizing: border-box;
+    width: 100%;
+    height: 5vh;
+}
+#listContainer > div button{
+    box-sizing: border-box;
+    height: 100%;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: none;
+    background-image: url(./deleteImage.png);
+}
