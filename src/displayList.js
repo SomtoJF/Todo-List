@@ -56,7 +56,8 @@ function displayList(listArray) {
 
         let timeContainer = document.createElement('div');
         timeContainer.innerHTML = `<small>Created ${relativeTime(Date.parse(listArray[i].dateCreated))}</small>`;
-
+        timeContainer.innerHTML += `<small>Due ${relativeTime(Date.parse(listArray[i].dueDate))}</small>`;
+        
         //append task information to task item
         listItem.appendChild(infoDiv);
 
