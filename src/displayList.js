@@ -39,11 +39,9 @@ function displayList(listArray) {
         infoDiv.addEventListener('click', function(){
             if(listContainer.childNodes[i].firstChild.style.height == '10vh'){
                 listContainer.childNodes[i].firstChild.style.height = '5vh';
-                deleteButton.style.display = 'none';
             }
             else{
                 listContainer.childNodes[i].firstChild.style.height = '10vh';
-                deleteButton.style.display = 'block';
             };
         });
         
