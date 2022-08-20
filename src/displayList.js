@@ -1,16 +1,14 @@
-import { personalList, schoolList, workList, listArrayString } from "./createForm";
+import { personalList, schoolList, workList } from "./createForm";
 import deleteImage from './deleteImage.png';
+let listArrayString;
+
+function arrayNameToString(arrayName){
+    listArrayString = Object.keys({arrayName});
+}
 
 function displayList(listArray) {
-    if(listArray == personalList){
-        listArrayString = 'personalList';
-    }
-    else if(listArray == workList){
-        listArrayString = 'workList';
-    }
-    else if(listArray == schoolList){
-        listArrayString = 'schoolList';
-    };
+    arrayNameToString(listArray);
+
     let listContainer = document.getElementById('listContainer');
     listContainer.innerHTML = '';
     for(let i = 0; i < listArray.length; i++){
