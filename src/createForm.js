@@ -46,6 +46,9 @@ function createForm(type) {
     dueDate.setAttribute('type', 'datetime-local');
     dueDate.setAttribute('id', 'dueDate');
     dueDate.setAttribute('required', '');
+    let dueDateLabel = document.createElement('label')
+    dueDateLabel.setAttribute('for', 'dueDate');
+    dueDateLabel.textContent = 'Date due';
     for(let i = 0; i < radioArray.length; i++){
         let radio = document.createElement('input');
         let label = document.createElement('label');
@@ -68,24 +71,24 @@ function createForm(type) {
         };
         content.appendChild(form);
     };
-    appendToForm(closeButton, title, description, dueDate,radioContainer, submitButton);
+    appendToForm(closeButton, title, description, dueDateLabel,dueDate,radioContainer, submitButton);
 
     function addTaskToList(listname){
         if(listname == 'personal'){
-            personalList[personalList.length] = task(title.value, description.value, getRadioValue('listPriorities'));
+            personalList[personalList.length] = task(title.value, description.value, getRadioValue('listPriorities'), dueDate.value);
             displayList(personalList);
         };
         if(listname == 'work'){
-            workList[workList.length] = task(title.value, description.value, getRadioValue('listPriorities'));
+            workList[workList.length] = task(title.value, description.value, getRadioValue('listPriorities'), dueDate.value);
             displayList(workList);
         };
         if(listname == 'school'){
-            schoolList[schoolList.length] = task(title.value, description.value, getRadioValue('listPriorities'));
+            schoolList[schoolList.length] = task(title.value, description.value, getRadioValue('listPriorities'), dueDate.value);
             displayList(schoolList);
         };
     };
 
-    function DisplayAvailableTasks(listname){
+    function displayTasksFromStorage(listname){
         if (storageAvailable('localStorage') && localStorage.getItem('personalList')) {
             personalList = JSON.parse(localStorage.getItem('personalList'));
             if(listname === 'personal'){
@@ -105,7 +108,7 @@ function createForm(type) {
            };
         };
     };
-    DisplayAvailableTasks(type);
+    displayTasksFromStorage(type);
     form.addEventListener('submit', function (e){
         addTaskToList(type);
         e.preventDefault();
