@@ -42,8 +42,6 @@ function displayList(listArray) {
             if(listContainer.childNodes[i].style.height == '10vh'){
                 listContainer.childNodes[i].style.height = '5vh';
                 deleteButton.style.display = 'none';
-                alert(listArray[i].dateCreated);
-                console.log(listArray);
             }
             else{
                 listContainer.childNodes[i].style.height = '10vh';
