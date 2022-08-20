@@ -3,15 +3,14 @@
     height: max-content;
     width: 100%;
     overflow: hidden;
-    display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    line-height: 5vh;
     display: grid;
     grid-template-columns: 10fr 1fr;
     justify-content: space-between;
 }
-#listContainer > div > div{
+#listContainer > div > div:first-child{
+    line-height: 5vh;
     background-color: white;
     border: solid 1px var(--blue);
     box-sizing: border-box;
@@ -26,6 +25,11 @@
     border-radius: 5px;
     background-repeat: no-repeat;
     background-position: center;
-    display: none;
     background-image: url(./deleteImage.png);
+}
+#listContainer small{
+    display: block;
+    color: #36454F;
+    font-size: 0.5rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
