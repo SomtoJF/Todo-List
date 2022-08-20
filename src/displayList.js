@@ -1,5 +1,6 @@
 import { personalList, schoolList, workList } from "./createForm";
 import deleteImage from './deleteImage.png';
+import { formatRelative } from "date-fns";
 let listArrayString;
 
 function arrayNameToString(arrayName){
@@ -41,6 +42,7 @@ function displayList(listArray) {
         infoDiv.addEventListener('click', function(){
             if(listContainer.childNodes[i].firstChild.style.height == '10vh'){
                 listContainer.childNodes[i].firstChild.style.height = '5vh';
+                // alert(relativeTime(Date.parse(listArray[i].dateCreated)));
                 deleteButton.style.display = 'none';
             }
             else{
@@ -67,6 +69,10 @@ function displayList(listArray) {
 
         //update local storage
         localStorage.setItem(`${listArrayString}`, JSON.stringify(listArray));
+    };
+    
+    const relativeTime = (date) => {
+        return formatRelative(date, new Date());
     };
 };
 export default displayList;
