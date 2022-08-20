@@ -28,23 +28,23 @@ function displayList(listArray) {
         deleteButton.style.display = 'none';
 
         if(listArray[i].priority == 'High'){
-            listItem.style.borderLeft = 'solid 5px red';
+            infoDiv.style.borderLeft = 'solid 5px red';
         }
         if(listArray[i].priority == 'Medium'){
-            listItem.style.borderLeft = 'solid 5px orange';
+            infoDiv.style.borderLeft = 'solid 5px orange';
         }
         if(listArray[i].priority == 'Low'){
-            listItem.style.borderLeft = 'solid 5px Lime';
+            infoDiv.style.borderLeft = 'solid 5px Lime';
         }
         listItem.setAttribute('title', `Priority: ${listArray[i].priority}`);
 
         infoDiv.addEventListener('click', function(){
-            if(listContainer.childNodes[i].style.height == '10vh'){
-                listContainer.childNodes[i].style.height = '5vh';
+            if(listContainer.childNodes[i].firstChild.style.height == '10vh'){
+                listContainer.childNodes[i].firstChild.style.height = '5vh';
                 deleteButton.style.display = 'none';
             }
             else{
-                listContainer.childNodes[i].style.height = '10vh';
+                listContainer.childNodes[i].firstChild.style.height = '10vh';
                 deleteButton.style.display = 'block';
             };
         });
