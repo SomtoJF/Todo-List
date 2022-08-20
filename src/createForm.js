@@ -19,6 +19,7 @@ function createForm(type) {
 
     let closeButton = document.createElement('button');
     closeButton.setAttribute('id', 'closeButton');
+    closeButton.setAttribute('type', 'button');
     closeButton.addEventListener('click', ()=> form.style.display = 'none');
 
     let radios = function(priority, name, type, id){
@@ -105,6 +106,7 @@ function createForm(type) {
         addTaskToList(type);
         e.preventDefault();
         form.reset();
+        form.style.display = 'none';
     })
     return form;
 };
