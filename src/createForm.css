@@ -1,8 +1,10 @@
 #form{
     width: max(40%, 250px);
-    height: 50vh;
+    height: max-content;
     position: absolute;
     top: 20%;
+    gap: 10px;
+    padding: 10px;
     left: 50%;
     margin-left: calc(-1 * max(40%, 250px) * 0.5);
     flex-direction: column;
@@ -16,7 +18,7 @@
     display: block;
 }
 #form > textarea{
-    height: 50%;
+    height: 25vh;
 }
 #form > button[type = 'submit']{
     width: 20%;
