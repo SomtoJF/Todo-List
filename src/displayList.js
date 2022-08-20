@@ -3,8 +3,16 @@ import deleteImage from './deleteImage.png';
 let listArrayString;
 
 function arrayNameToString(arrayName){
-    listArrayString = Object.keys({arrayName});
-}
+    if(arrayName == personalList){
+        listArrayString = 'personalList';
+    }
+    else if(arrayName == workList){
+        listArrayString = 'workList';
+    }
+    else if(arrayName == schoolList){
+        listArrayString = 'schoolList';
+    };
+};
 
 function displayList(listArray) {
     arrayNameToString(listArray);
@@ -34,6 +42,8 @@ function displayList(listArray) {
             if(listContainer.childNodes[i].style.height == '10vh'){
                 listContainer.childNodes[i].style.height = '5vh';
                 deleteButton.style.display = 'none';
+                alert(listArray[i].dateCreated);
+                console.log(listArray);
             }
             else{
                 listContainer.childNodes[i].style.height = '10vh';
