@@ -6,8 +6,6 @@ import { default as displayList } from "./displayList";
 let personalList = [];
 let workList = [];
 let schoolList = [];
-let listArrayString;
-import deleteImage from './deleteImage.png';
 
 function createForm(type) {
     let form = document.createElement('form');
@@ -111,4 +109,4 @@ function createForm(type) {
     return form;
 };
 export default createForm;
-export {personalList, workList, schoolList, listArrayString};
+export {personalList, workList, schoolList};
