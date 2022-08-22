@@ -21,8 +21,8 @@
     height: 20vh;
 }
 #form > button[type = 'submit']{
-    width: 50%;
-    height: 15%;
+    width: 25%;
+    height: 10vh;
     background-color: var(--blue);
     border: none;
     border-left: 5px solid var(--pink);
