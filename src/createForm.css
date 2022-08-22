@@ -18,11 +18,11 @@
     display: block;
 }
 #form > textarea{
-    height: 25vh;
+    height: 20vh;
 }
 #form > button[type = 'submit']{
     width: 20%;
-    height: 10%;
+    height: 15%;
     background-color: var(--blue);
     border: none;
     border-left: 5px solid var(--pink);
